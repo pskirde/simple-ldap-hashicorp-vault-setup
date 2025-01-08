@@ -55,20 +55,7 @@ curl \
     --data @- \
     ${VAULT_ADDR}/v1/sys/policies/acl/dev <<EOF
 {
-  "policy": "
-    # Full access to dev secrets data
-    path \"secret/data/dev/*\" {
-      capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]
-    }
-    # Full access to dev secrets metadata
-    path \"secret/metadata/dev/*\" {
-      capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]
-    }
-    # Allow listing
-    path \"secret/metadata/*\" {
-      capabilities = [\"list\"]
-    }
-  "
+  "path \"secret/data/dev/*\" {\n    capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]\n}\n\npath \"secret/metadata/dev/*\" {\n    capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]\n}"
 }
 EOF
 
@@ -79,20 +66,7 @@ curl \
     --data @- \
     ${VAULT_ADDR}/v1/sys/policies/acl/ops <<EOF
 {
-  "policy": "
-    # Full access to ops secrets data
-    path \"secret/data/ops/*\" {
-      capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]
-    }
-    # Full access to ops secrets metadata
-    path \"secret/metadata/ops/*\" {
-      capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]
-    }
-    # Allow listing
-    path \"secret/metadata/*\" {
-      capabilities = [\"list\"]
-    }
-  "
+    "path \"secret/data/ops/*\" {\n    capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]\n}\n\npath \"secret/metadata/ops/*\" {\n    capabilities = [\"create\", \"read\", \"update\", \"delete\", \"list\"]\n}"
 }
 EOF
 
